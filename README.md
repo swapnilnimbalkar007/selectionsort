@@ -1,28 +1,32 @@
-import java.util.Scanner;
 
-public class MovieBookingSystem {
-  static int availableSeats = 20;
+public class SelectionSort1 {
 
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+		
+		int arr[] = {1,8,7,9,2,6};
+		int length = arr.length;
+		
+		for(int i=0;i<length-1;i++)
+		{
+			int min_index=i;
+			for(int j=i+1;j<length;j++)
+			{
+				if(arr[min_index] > arr[j])
+				{
+					min_index=j;
+				}
+			}
+			
+			int temp = arr[min_index];
+			arr[min_index] = arr[i];
+			arr[i] = temp;
+		}
+		
+		for(int arr1: arr)
+		{
+			System.out.println(arr1);
+		}
 
-    System.out.println("Welcome to the Movie Ticket Booking System");
-    System.out.println("Available seats: " + availableSeats);
+	}
 
-    while (true) {
-      System.out.print("Enter the number of seats to book (or 0 to exit): ");
-      int numSeats = sc.nextInt();
-      if (numSeats == 0) {
-        break;
-      }
-      if (numSeats > availableSeats) {
-        System.out.println("Sorry, we only have " + availableSeats + " seats available.");
-      } else {
-        availableSeats -= numSeats;
-        System.out.println("Booking confirmed! Enjoy the movie.");
-        System.out.println("Available seats: " + availableSeats);
-      }
-    }
-    System.out.println("Thanks for using the movie ticket booking system.");
-  }
 }
